@@ -1,12 +1,26 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+  <div>
+    <h1>{{ randomNumber }}</h1>
+    <button @click="getRandomNumber">Get new number</button>
   </div>
 </template>
+
+
+<script>
+  import { mapActions } from 'vuex'
+
+  export default {
+    name: 'App',
+    computed: {
+      randomNumber() {
+        return this.$store.state.randomNumber
+      }
+    },
+    methods: {
+      ...mapActions(['newRandomNumber'])
+    }
+  }
+</script>
 
 <style lang="scss">
 #app {
