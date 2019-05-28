@@ -1,6 +1,4 @@
-import repositoryFactory, { REPOSITORIES } from '@/common/repositories';
-
-const supleRepository = repositoryFactory(REPOSITORIES.SUPLE);
+import axios from "axios";
 
 export default {
   state: {
@@ -23,13 +21,15 @@ export default {
   },
   actions: {
     hydrateSuple({commit}, params) {
-      return supleRepository.getSuple(params)
+      axios
+        .get('/suple', {params})
         .then(response => {
           commit('hydrateSupleListMutation', response)
         });
     },
     updateSuplePrice({commit}, payload) {
-      return supleRepository.updateSuple(payload.id, {price: payload.price})
+      axios
+        .patch(`/suple/${payload.id}`, {price: payload.price})
         .then(response => {
           commit('updateSuplePriceMutation', response)
         });

@@ -1,20 +1,4 @@
-import repositoryFactory, { REPOSITORIES } from '@/common/repositories';
-
-const userRepository = repositoryFactory(REPOSITORIES.USER);
-
-export const userNamespace = {
-  mutations: {
-    getUserMutation: 'getUserMutation',
-    updateUserDetailsMutation: 'updateUserDetailsMutation'
-  },
-  getters: {
-    isKoksu: 'isKoksu'
-  },
-  actions: {
-    getUser: 'getUser',
-    updateUserDetails: 'updateUserDetails',
-  }
-};
+import axios from "axios";
 
 export default {
   state: {
@@ -39,13 +23,15 @@ export default {
     }
   },
   actions: {
-    getUser({commit}, payload) {
-      return userRepository.get(payload)
-        .then(response => commit('getUserMutation', response));
+    getUser({commit}) {
+      axios
+        .get(`/userinfo`)
+        .then(response => commit('getUserMutation', response.data));
     },
-   updateUserDetails({commit}, payload) {
-      return userRepository.update(payload)
-        .then(response => commit('updateUserDetailsMutation', response));
+    updateUserDetails({commit}, payload) {
+      axios
+        .patch(`/userinfo`, payload)
+        .then(response => commit('updateUserDetailsMutation', response.data));
     }
   }
 }

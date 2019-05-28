@@ -1,6 +1,4 @@
-import repositoryFactory, { REPOSITORIES } from '@/common/repositories';
-
-const metaRepository = repositoryFactory(REPOSITORIES.META);
+import axios from "axios";
 
 export default {
   state: {
@@ -27,8 +25,10 @@ export default {
       if (state.supleSettingsLoaded) {
         return;
       }
-      return metaRepository.getSupleSettings()
-        .then(response => commit('hydrateSupleSettingsMutation', response))
+
+      axios
+        .get(`/suple-settings`)
+        .then(response => commit('hydrateSupleSettingsMutation', response.data))
     }
   }
 }
