@@ -38,15 +38,11 @@ export default {
   actions: {
     [supleNamespace.actions.hydrateSuple]({commit}, params) {
       return supleRepository.getSuple(params)
-        .then(response => {
-          commit(supleNamespace.mutations.hydrateSupleListMutation, response)
-        });
+        .then(response => commit(supleNamespace.mutations.hydrateSupleListMutation, response));
     },
     [supleNamespace.actions.updateSuplePrice]({commit}, payload) {
       return supleRepository.updateSuple(payload.id, {price: payload.price})
-        .then(response => {
-          commit(supleNamespace.mutations.updateSuplePriceMutation, response)
-        });
+        .then(response => commit(supleNamespace.mutations.updateSuplePriceMutation, response));
     }
   }
 }

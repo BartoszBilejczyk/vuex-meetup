@@ -16,7 +16,6 @@ export const metaNamespace = {
 
 export default {
   state: {
-    supleSettingsLoaded: false,
     supleSettings: {
       suplePower: [],
       supleEffectiveness: [],
@@ -34,11 +33,7 @@ export default {
     }
   },
   actions: {
-    [metaNamespace.actions.hydrateSupleSettings]({commit, state}) {
-      // prevent multiple requests if we have the data already
-      if (state.supleSettingsLoaded) {
-        return;
-      }
+    [metaNamespace.actions.hydrateSupleSettings]({commit}) {
       return metaRepository.getSupleSettings()
         .then(response => commit(metaNamespace.mutations.hydrateSupleSettingsMutation, response))
     }
