@@ -25,27 +25,27 @@ export default {
     }
   },
   mutations: {
-    [userNamespace.mutations.getUserMutation](state, payload) {
+    getUserMutation(state, payload) {
       state.loggedIn = true;
       state.user = {...payload};
     },
-    [userNamespace.mutations.updateUserDetailsMutation](state, payload) {
+    updateUserDetailsMutation(state, payload) {
       state.user = Object.assign({}, payload);
     },
   },
   getters: {
-    [userNamespace.getters.isKoksu](state) {
+    isKoksu(state) {
       return state.user.isKoksu;
     }
   },
   actions: {
-    [userNamespace.actions.getUser]({commit}, payload) {
+    getUser({commit}, payload) {
       return userRepository.get(payload)
-        .then(response => commit(userNamespace.mutations.getUserMutation, response));
+        .then(response => commit('getUserMutation', response));
     },
-    [userNamespace.actions.updateUserDetails]({commit}, payload) {
+   updateUserDetails({commit}, payload) {
       return userRepository.update(payload)
-        .then(response => commit(userNamespace.mutations.updateUserDetailsMutation, response));
+        .then(response => commit('updateUserDetailsMutation', response));
     }
   }
 }

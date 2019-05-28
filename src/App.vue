@@ -24,10 +24,6 @@
 <script>
   import { createNamespacedHelpers } from 'vuex'
 
-  import { supleNamespace } from "./store/modules/suple";
-  import { userNamespace } from "./store/modules/user";
-  import { metaNamespace } from "./store/modules/meta";
-
   const suple = createNamespacedHelpers('suple');
   const user = createNamespacedHelpers('user');
   const meta = createNamespacedHelpers('meta');
@@ -35,20 +31,20 @@
   export default {
     name: 'App',
     computed: {
-      ...suple.mapGetters([supleNamespace.getters.proteinSuple]),
-      ...user.mapGetters([userNamespace.getters.isKoksu]),
-      ...meta.mapGetters([metaNamespace.getters.suplePowerful])
+      ...suple.mapGetters(['proteinSuple']),
+      ...user.mapGetters(['isKoksu']),
+      ...meta.mapGetters(['suplePowerful'])
     },
     methods: {
       ...suple.mapActions([
-        supleNamespace.actions.hydrateSuple,
-        supleNamespace.actions.updateSuplePrice
+        'hydrateSuple',
+        'updateSuplePrice'
       ]),
       ...user.mapActions([
-        userNamespace.actions.getUser,
-        userNamespace.actions.updateUserDetails
+        'getUser',
+        'updateUserDetails'
       ]),
-      ...meta.mapActions([metaNamespace.actions.hydrateSupleSettings]),
+      ...meta.mapActions(['hydrateSupleSettings']),
     },
     created() {
       this.getUser();
