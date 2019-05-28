@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 export default {
-  async getAppSettings() {
-    const { data } = await axios.get(`/appsettings`);
+  async getSupleSettings() {
+    const { data } = await axios.get(`/suple-settings`);
     return data;
   }
 };

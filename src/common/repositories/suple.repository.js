@@ -1,17 +1,10 @@
 import axios from 'axios';
-const CancelToken = axios.CancelToken;
 
 export default {
-  supleCanceller: null,
-  
   async getSuple(params) {
     // Add handling cancellation without throwing into console
-    const response = await axios.get('/suple', {params});
-    
-    if (!response.data) {
-      throw new Error('empty response');
-    }
-    return response.data;
+    const { data } = await axios.get('/suple', {params});
+    return data;
   },
   
   async updateSuple(id, params) {

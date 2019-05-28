@@ -38,7 +38,7 @@ export default {
   },
   actions: {
     [supleNamespace.actions.hydrateSuple]({commit}, params) {
-      return supleRepository.hydrateSuple(params)
+      return supleRepository.getSuple(params)
         .then(response => {
           commit(supleNamespace.mutations.hydrateSupleListMutation, response)
         });

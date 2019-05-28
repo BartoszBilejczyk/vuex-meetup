@@ -9,7 +9,6 @@ export const userNamespace = {
     updateUserDetailsMutation: 'updateUserDetailsMutation'
   },
   getters: {
-    isAdmin: 'isAdmin',
     isKoksu: 'isKoksu'
   },
   actions: {
@@ -23,7 +22,6 @@ export default {
     user: {
       id: 0,
       name: '',
-      isAdmin: false,
       isKoksu: false
     }
   },
@@ -37,15 +35,12 @@ export default {
     },
   },
   getters: {
-    [userNamespace.getters.isAdmin](state) {
-      return state.user.isAdmin;
-    },
     [userNamespace.getters.isKoksu](state) {
       return state.user.isKoksu;
     }
   },
   actions: {
-    async [userNamespace.actions.getUser]({commit}, payload) {
+    [userNamespace.actions.getUser]({commit}, payload) {
       return userRepository.get(payload)
         .then(response => commit(userNamespace.mutations.getUserMutation, response));
     },

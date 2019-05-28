@@ -5,46 +5,43 @@ const metaRepository = repositoryFactory(REPOSITORIES.META);
 export const metaNamespace = {
   module: 'meta',
   mutations: {
-    hydrateAppSettingsMutation: 'hydrateAppSettingsMutation'
+    hydrateSupleSettingsMutation: 'hydrateSupleSettingsMutation'
   },
   getters: {
     suplePowerful: 'suplePowerful'
   },
   actions: {
-    hydrateAppSettings: 'hydrateAppSettings',
+    hydrateSupleSettings: 'hydrateSupleSettings',
   }
 };
 
 export default {
   state: {
-    appSettingsLoaded: false,
-    appSettings: {
+    supleSettingsLoaded: false,
+    supleSettings: {
       suplePower: [],
       supleEffectiveness: [],
     }
   },
   mutations: {
-    [metaNamespace.mutations.hydrateAppSettingsMutation](state, payload) {
-      state.appSettingsLoaded = true;
-      state.appSettings = payload;
+    [metaNamespace.mutations.hydrateSupleSettingsMutation](state, payload) {
+      state.supleSettingsLoaded = true;
+      state.supleSettings = payload;
     }
   },
   getters: {
-    [metaNamespace.getters.appSettings](state) {
-      return state.appSettings;
-    },
     [metaNamespace.getters.suplePowerful]: (state) => {
-      return state.appSettings.filter(suple => suple.power === 'high')
+      return state.supleSettings.filter(power => power >= 5)
     }
   },
   actions: {
-    [metaNamespace.actions.hydrateAppSettings]({commit, state}) {
+    [metaNamespace.actions.hydrateSupleSettings]({commit, state}) {
       // prevent multiple requests if we have the data already
-      if (state.appSettingsLoaded) {
+      if (state.supleSettingsLoaded) {
         return;
       }
-      return metaRepository.getAppSettings()
-        .then(response => commit(metaNamespace.mutations.hydrateAppSettingsMutation, response))
+      return metaRepository.getSupleSettings()
+        .then(response => commit(metaNamespace.mutations.hydrateSupleSettingsMutation, response))
     }
   }
 }
