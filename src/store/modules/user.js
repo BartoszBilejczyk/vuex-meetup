@@ -2,20 +2,6 @@ import repositoryFactory, { REPOSITORIES } from '@/common/repositories';
 
 const userRepository = repositoryFactory(REPOSITORIES.USER);
 
-export const userNamespace = {
-  mutations: {
-    getUserMutation: 'getUserMutation',
-    updateUserDetailsMutation: 'updateUserDetailsMutation'
-  },
-  getters: {
-    isKoksu: 'isKoksu'
-  },
-  actions: {
-    getUser: 'getUser',
-    updateUserDetails: 'updateUserDetails',
-  }
-};
-
 export default {
   state: {
     user: {
