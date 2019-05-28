@@ -22,29 +22,25 @@
 </template>
 
 <script>
-  import { createNamespacedHelpers } from 'vuex'
-
-  const suple = createNamespacedHelpers('suple');
-  const user = createNamespacedHelpers('user');
-  const meta = createNamespacedHelpers('meta');
+  import { mapGetters, mapActions } from 'vuex'
 
   export default {
     name: 'App',
     computed: {
-      ...suple.mapGetters(['proteinSuple']),
-      ...user.mapGetters(['isKoksu']),
-      ...meta.mapGetters(['suplePowerful'])
+      ...mapGetters([
+        'proteinSuple',
+        'suplePowerful',
+        'isKoksu'
+      ])
     },
     methods: {
-      ...suple.mapActions([
+      ...mapActions([
         'hydrateSuple',
-        'updateSuplePrice'
-      ]),
-      ...user.mapActions([
+        'updateSuplePrice',
         'getUser',
-        'updateUserDetails'
-      ]),
-      ...meta.mapActions(['hydrateSupleSettings']),
+        'updateUserDetails',
+        'hydrateSupleSettings'
+      ])
     },
     created() {
       this.getUser();
