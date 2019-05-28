@@ -15,7 +15,6 @@
         {{ suple.name }}
         {{ suple.price }}
         {{ suple.power }}
-
         <button>Give him some of this suple</button>
       </div>
     </div>
@@ -23,25 +22,33 @@
 </template>
 
 <script>
-  import { suple, user, meta, mapStoreGetters, mapStoreActions } from '@/store';
+  import { createNamespacedHelpers } from 'vuex'
+
+  import { supleNamespace } from "./store/modules/suple";
+  import { userNamespace } from "./store/modules/user";
+  import { metaNamespace } from "./store/modules/meta";
+
+  const suple = createNamespacedHelpers('suple');
+  const user = createNamespacedHelpers('user');
+  const meta = createNamespacedHelpers('meta');
 
   export default {
     name: 'App',
     computed: {
-      ...mapStoreGetters([
-        suple.getters.proteinSuple,
-        meta.getters.suplePowerful,
-        user.getters.isKoksu
-      ])
+      ...suple.mapGetters([supleNamespace.getters.proteinSuple]),
+      ...user.mapGetters([userNamespace.getters.isKoksu]),
+      ...meta.mapGetters([metaNamespace.getters.suplePowerful])
     },
     methods: {
-      ...mapStoreActions([
-        suple.actions.hydrateSuple,
-        suple.actions.updateSuplePrice,
-        user.actions.getUser,
-        user.actions.updateUserDetails,
-        meta.actions.hydrateSupleSettings
-      ])
+      ...suple.mapActions([
+        supleNamespace.actions.hydrateSuple,
+        supleNamespace.actions.updateSuplePrice
+      ]),
+      ...user.mapActions([
+        userNamespace.actions.getUser,
+        userNamespace.actions.updateUserDetails
+      ]),
+      ...meta.mapActions([metaNamespace.actions.hydrateSupleSettings]),
     },
     created() {
       this.getUser();

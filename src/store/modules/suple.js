@@ -3,7 +3,6 @@ import repositoryFactory, { REPOSITORIES } from '@/common/repositories';
 const supleRepository = repositoryFactory(REPOSITORIES.SUPLE);
 
 export const supleNamespace = {
-  module: 'suple',
   mutations: {
     hydrateSupleListMutation: 'hydrateSupleListMutation',
     updateSuplePriceMutation: 'updateSuplePriceMutation'

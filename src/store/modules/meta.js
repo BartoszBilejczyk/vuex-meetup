@@ -3,7 +3,6 @@ import repositoryFactory, { REPOSITORIES } from '@/common/repositories';
 const metaRepository = repositoryFactory(REPOSITORIES.META);
 
 export const metaNamespace = {
-  module: 'meta',
   mutations: {
     hydrateSupleSettingsMutation: 'hydrateSupleSettingsMutation'
   },

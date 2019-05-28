@@ -3,7 +3,6 @@ import repositoryFactory, { REPOSITORIES } from '@/common/repositories';
 const userRepository = repositoryFactory(REPOSITORIES.USER);
 
 export const userNamespace = {
-  module: 'user',
   mutations: {
     getUserMutation: 'getUserMutation',
     updateUserDetailsMutation: 'updateUserDetailsMutation'
