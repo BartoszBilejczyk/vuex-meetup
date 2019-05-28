@@ -25,13 +25,11 @@ export default {
   },
   actions: {
     getUser({commit}) {
-      axios
-        .get(`/userinfo`)
+      axios.get(`/userinfo`)
         .then(response => commit('getUserMutation', response.data));
     },
     updateUserDetails({commit}, payload) {
-      axios
-        .patch(`/userinfo`, payload)
+      axios.patch(`/userinfo`, payload)
         .then(response => commit('updateUserDetailsMutation', response.data));
     }
   }

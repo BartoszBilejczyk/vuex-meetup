@@ -22,18 +22,12 @@ export default {
   },
   actions: {
     hydrateSuple({commit}, params) {
-      axios
-        .get('/suple', {params})
-        .then(response => {
-          commit('hydrateSupleListMutation', response)
-        });
+      axios.get('/suple', {params})
+        .then(response => commit('hydrateSupleListMutation', response));
     },
     updateSuplePrice({commit}, payload) {
-      axios
-        .patch(`/suple/${payload.id}`, {price: payload.price})
-        .then(response => {
-          commit('updateSuplePriceMutation', response)
-        });
+      axios.patch(`/suple/${payload.id}`, {price: payload.price})
+        .then(response => commit('updateSuplePriceMutation', response));
     }
   }
 }

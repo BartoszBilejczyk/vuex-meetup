@@ -3,7 +3,6 @@ import axios from "axios";
 export default {
   namespaced: true,
   state: {
-    supleSettingsLoaded: false,
     supleSettings: {
       suplePower: [],
       supleEffectiveness: [],
@@ -21,14 +20,8 @@ export default {
     }
   },
   actions: {
-    hydrateSupleSettings({commit, state}) {
-      // prevent multiple requests if we have the data already
-      if (state.supleSettingsLoaded) {
-        return;
-      }
-
-      axios
-        .get(`/suple-settings`)
+    hydrateSupleSettings({commit}) {
+      axios.get(`/suple-settings`)
         .then(response => commit('hydrateSupleSettingsMutation', response.data))
     }
   }
