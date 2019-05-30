@@ -3,7 +3,7 @@ import repositoryFactory, { REPOSITORIES } from '@/common/repositories';
 const userRepository = repositoryFactory(REPOSITORIES.USER);
 
 export default {
-  namespace: 'user',
+  namespaced: true,
   state: {
     user: {
       id: 0,

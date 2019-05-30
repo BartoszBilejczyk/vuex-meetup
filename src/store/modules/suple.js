@@ -33,7 +33,7 @@ const supleList = [
 ];
 
 export default {
-  namespace: 'suple',
+  namespaced: true,
   state: {
     supleList: [],
   },

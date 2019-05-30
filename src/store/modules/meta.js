@@ -3,7 +3,7 @@ import repositoryFactory, { REPOSITORIES } from '@/common/repositories';
 const metaRepository = repositoryFactory(REPOSITORIES.META);
 
 export default {
-  namespace: 'meta',
+  namespaced: true,
   state: {
     supleSettingsLoaded: false,
     supleSettings: {
