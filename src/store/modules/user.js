@@ -21,8 +21,8 @@ export default {
     },
   },
   getters: {
-    isKoksu(state) {
-      return state.user.isKoksu;
+    user(state) {
+      return state.user;
     }
   },
   actions: {
@@ -30,9 +30,9 @@ export default {
       return userRepository.get(payload)
         .then(response => commit('getUserMutation', response));
     },
-   updateUserDetails({commit}, payload) {
-      return userRepository.update(payload)
-        .then(response => commit('updateUserDetailsMutation', response));
-    }
+    updateUserDetails({commit}, payload) {
+      commit('updateUserDetailsMutation', payload);
+      alert(`You gave him suple with power ${payload}`)
+    },
   }
 }

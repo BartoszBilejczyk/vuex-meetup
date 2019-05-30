@@ -2,6 +2,36 @@ import repositoryFactory, { REPOSITORIES } from '@/common/repositories';
 
 const supleRepository = repositoryFactory(REPOSITORIES.SUPLE);
 
+const supleList = [
+  {
+    id: 1,
+    name: 'Bulk Up Mass',
+    price: 1,
+    power: 2,
+    type: 'protein'
+  },
+  {
+    id: 2,
+    name: 'Cutting Edge Protein',
+    price: 20,
+    power: 4,
+    type: 'protein'
+  },
+  {
+    id: 3,
+    name: 'Mutant Mass',
+    price: 50,
+    power: 10,
+    type: 'protein'
+  },
+  {
+    id: 4,
+    name: 'Energizing Water',
+    price: 20,
+    type: 'other'
+  },
+];
+
 export default {
   namespace: 'suple',
   state: {
@@ -23,11 +53,8 @@ export default {
     }
   },
   actions: {
-    hydrateSuple({commit}, params) {
-      return supleRepository.getSuple(params)
-        .then(response => {
-          commit('hydrateSupleListMutation', response)
-        });
+    hydrateSuple({commit}) {
+      commit('hydrateSupleListMutation', supleList)
     },
     updateSuplePrice({commit}, payload) {
       return supleRepository.updateSuple(payload.id, {price: payload.price})
