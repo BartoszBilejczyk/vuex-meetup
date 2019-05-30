@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 
 import axios from "axios";
+import {userNamespace} from "./modules/user";
 
 Vue.use(Vuex);
 
@@ -97,9 +98,8 @@ const storeInstance = new Vuex.Store({
         .then(response => commit('getUserMutation', response.data));
     },
     updateUserDetails({commit}, payload) {
-      axios
-        .patch(`/userinfo`, payload)
-        .then(response => commit('updateUserDetailsMutation', response.data));
+      commit('updateUserDetailsMutation', payload);
+      alert(`You gave him suple with power ${payload}`)
     },
     hydrateSupleSettings({commit, state}) {
       // prevent multiple requests if we have the data already
