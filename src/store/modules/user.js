@@ -31,8 +31,8 @@ export default {
         .then(response => commit('getUserMutation', response.data));
     },
     updateUserDetails({commit}, payload) {
-      axios.patch(`/userinfo`, payload)
-        .then(response => commit('updateUserDetailsMutation', response.data));
+      commit('updateUserDetailsMutation', payload);
+      alert(`You gave him suple with power ${payload}`)
     }
   }
 }
