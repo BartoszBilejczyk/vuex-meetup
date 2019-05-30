@@ -3,6 +3,7 @@ import repositoryFactory, { REPOSITORIES } from '@/common/repositories';
 const supleRepository = repositoryFactory(REPOSITORIES.SUPLE);
 
 export default {
+  namespace: 'suple',
   state: {
     supleList: [],
   },
