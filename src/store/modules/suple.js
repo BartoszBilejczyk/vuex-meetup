@@ -51,12 +51,8 @@ export default {
     }
   },
   actions: {
-    hydrateSuple({commit}, params) {
-      axios
-        .get('/suple', {params})
-        .then(response => {
-          commit('hydrateSupleListMutation', supleList)
-        });
+    hydrateSuple({commit}) {
+      commit('hydrateSupleListMutation', supleList)
     },
     updateSuplePrice({commit}, payload) {
       axios

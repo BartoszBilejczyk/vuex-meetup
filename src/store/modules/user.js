@@ -18,8 +18,8 @@ export default {
     },
   },
   getters: {
-    isKoksu(state) {
-      return state.user.isKoksu;
+    user(state) {
+      return state.user;
     }
   },
   actions: {

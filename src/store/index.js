@@ -44,8 +44,8 @@ const storeInstance = new Vuex.Store({
     proteinSuple: (state) => {
       return state.supleList.filter(suple => suple.type === 'protein')
     },
-    isKoksu(state) {
-      return state.user.isKoksu;
+    user(state) {
+      return state.user;
     },
     suplePowerful: (state) => {
       return state.supleSettings.filter(power => power >= 5)
