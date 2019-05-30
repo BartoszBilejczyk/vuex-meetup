@@ -8,7 +8,7 @@ export const userNamespace = {
     updateUserDetailsMutation: 'updateUserDetailsMutation'
   },
   getters: {
-    isKoksu: 'isKoksu'
+    user: 'user'
   },
   actions: {
     getUser: 'getUser',
@@ -31,12 +31,14 @@ export default {
       state.user = {...payload};
     },
     [userNamespace.mutations.updateUserDetailsMutation](state, payload) {
-      state.user = Object.assign({}, payload);
+      if (payload > 5) {
+        state.user = Object.assign({}, state.user, {isKoksu: true});
+      }
     },
   },
   getters: {
-    [userNamespace.getters.isKoksu](state) {
-      return state.user.isKoksu;
+    [userNamespace.getters.user](state) {
+      return state.user;
     }
   },
   actions: {
@@ -45,8 +47,8 @@ export default {
         .then(response => commit(userNamespace.mutations.getUserMutation, response));
     },
     [userNamespace.actions.updateUserDetails]({commit}, payload) {
-      return userRepository.update(payload)
-        .then(response => commit(userNamespace.mutations.updateUserDetailsMutation, response));
+      commit('updateUserDetailsMutation', payload);
+      alert(`You gave him suple with power ${payload}`)
     }
   }
 }

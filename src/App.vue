@@ -47,7 +47,7 @@
     name: 'App',
     computed: {
       ...suple.mapGetters([supleNamespace.getters.proteinSuple]),
-      ...user.mapGetters([userNamespace.getters.isKoksu]),
+      ...user.mapGetters([userNamespace.getters.user]),
       ...meta.mapGetters([metaNamespace.getters.suplePowerful])
     },
     methods: {
