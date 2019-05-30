@@ -5,6 +5,36 @@ import axios from "axios";
 
 Vue.use(Vuex);
 
+const supleList = [
+  {
+    id: 1,
+    name: 'Bulk Up Mass',
+    price: 1,
+    power: 2,
+    type: 'protein'
+  },
+  {
+    id: 2,
+    name: 'Cutting Edge Protein',
+    price: 20,
+    power: 4,
+    type: 'protein'
+  },
+  {
+    id: 3,
+    name: 'Mutant Mass',
+    price: 50,
+    power: 10,
+    type: 'protein'
+  },
+  {
+    id: 4,
+    name: 'Energizing Water',
+    price: 20,
+    type: 'other'
+  },
+];
+
 const storeInstance = new Vuex.Store({
   state: {
     supleList: [],
@@ -15,8 +45,7 @@ const storeInstance = new Vuex.Store({
     },
     supleSettingsLoaded: false,
     supleSettings: {
-      suplePower: [],
-      supleEffectiveness: [],
+      suplePower: [1, 2, 5, 10, 20, 50, 150],
     }
   },
   mutations: {
@@ -48,16 +77,12 @@ const storeInstance = new Vuex.Store({
       return state.user;
     },
     suplePowerful: (state) => {
-      return state.supleSettings.filter(power => power >= 5)
+      return state.supleSettings.suplePower.filter(power => power >= 5)
     }
   },
   actions: {
-    hydrateSuple({commit}, params) {
-      axios
-        .get('/suple', {params})
-        .then(response => {
-          commit('hydrateSupleListMutation', response)
-        });
+    hydrateSuple({commit}) {
+      commit('hydrateSupleListMutation', supleList)
     },
     updateSuplePrice({commit}, payload) {
       axios
