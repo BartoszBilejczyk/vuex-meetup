@@ -15,12 +15,14 @@ export default {
       state.user = {...payload};
     },
     updateUserDetailsMutation(state, payload) {
-      state.user = Object.assign({}, payload);
+      if (payload > 5) {
+        state.user = Object.assign({}, state.user, {isKoksu: true});
+      }
     },
   },
   getters: {
-    isKoksu(state) {
-      return state.user.isKoksu;
+    user(state) {
+      return state.user;
     }
   },
   actions: {

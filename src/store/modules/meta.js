@@ -4,8 +4,7 @@ export default {
   namespaced: true,
   state: {
     supleSettings: {
-      suplePower: [],
-      supleEffectiveness: [],
+      suplePower: [1, 2, 5, 10, 20, 50, 150]
     }
   },
   mutations: {
@@ -16,7 +15,7 @@ export default {
   },
   getters: {
     suplePowerful: (state) => {
-      return state.supleSettings.filter(power => power >= 5)
+      return state.supleSettings.suplePower.filter(power => power >= 5)
     }
   },
   actions: {
