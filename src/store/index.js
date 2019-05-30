@@ -2,7 +2,6 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 
 import axios from "axios";
-import {userNamespace} from "./modules/user";
 
 Vue.use(Vuex);
 
@@ -63,7 +62,9 @@ const storeInstance = new Vuex.Store({
       state.user = {...payload};
     },
     updateUserDetailsMutation(state, payload) {
-      state.user = Object.assign({}, payload);
+      if (payload > 5) {
+        state.user = Object.assign({}, state.user, {isKoksu: true});
+      }
     },
     hydrateSupleSettingsMutation(state, payload) {
       state.supleSettingsLoaded = true;
