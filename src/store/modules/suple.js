@@ -1,5 +1,36 @@
 import axios from "axios";
 
+const supleList = [
+  {
+    id: 1,
+    name: 'Bulk Up Mass',
+    price: 1,
+    power: 2,
+    type: 'protein'
+  },
+  {
+    id: 2,
+    name: 'Cutting Edge Protein',
+    price: 20,
+    power: 4,
+    type: 'protein'
+  },
+  {
+    id: 3,
+    name: 'Mutant Mass',
+    price: 50,
+    power: 10,
+    type: 'protein'
+  },
+  {
+    id: 4,
+    name: 'Energizing Water',
+    price: 20,
+    type: 'other'
+  },
+];
+
+
 export default {
   state: {
     supleList: [],
@@ -24,7 +55,7 @@ export default {
       axios
         .get('/suple', {params})
         .then(response => {
-          commit('hydrateSupleListMutation', response)
+          commit('hydrateSupleListMutation', supleList)
         });
     },
     updateSuplePrice({commit}, payload) {
