@@ -17,6 +17,7 @@ export const userNamespace = {
 };
 
 export default {
+  namespaced: true,
   state: {
     user: {
       id: 0,

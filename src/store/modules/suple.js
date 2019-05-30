@@ -17,6 +17,7 @@ export const supleNamespace = {
 };
 
 export default {
+  namespaced: true,
   state: {
     supleList: [],
   },

@@ -15,6 +15,7 @@ export const metaNamespace = {
 };
 
 export default {
+  namespaced: true,
   state: {
     supleSettings: {
       suplePower: [],
